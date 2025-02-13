@@ -13,7 +13,7 @@ app.use(express.json({ limit: "10mb" }));  // Increase JSON payload limit to 10M
 app.use(express.urlencoded({ limit: "10mb", extended: true })); // For form data
 app.use(cookieParser());
 app.use(cors({
-       origin: "http://localhost:5173",
+       origin: "https://chat-bot-mpjf.onrender.com",
     credentials: true,
 }
 ))
