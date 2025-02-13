@@ -11,14 +11,17 @@ export const getUsersForSidebar = async (req, res) => {
     res.status(200).json({ filteredUsers });
   } catch (error) {
     console.error("error in getUsersForSidebar: ", error.message);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error form the getusers" });
   }
 };
 
 export const getMessages=async(req,res)=>{
     try {
         const {id : userToChatId}= req.params
+        console.log("req.params:", req.params); 
         const myId=req.user._id;
+        console.log("the backend getmessages is ",req.user._id)
+        console.log("userToChat id", userToChatId);
 
         const messages=await Message.find({
             $or:[{senderId:myId,receiverId:userToChatId},{senderId:userToChatId,receiverId:myId}]  
@@ -26,7 +29,7 @@ export const getMessages=async(req,res)=>{
         res.status(200).json(messages)
     } catch (error) {
         console.log("error in getMessage controller",error.message);
-        res.status(500).json({error:"internal server error"});
+        res.status(500).json({error:"internal server error the messages not fetch"});
     }
 }
 
